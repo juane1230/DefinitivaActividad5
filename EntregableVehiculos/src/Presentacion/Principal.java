@@ -15,18 +15,19 @@ class excepcionFueraRango extends Exception {
 }
 
 public class Principal { 
-
+		// METODO MAIN
+	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		int opcion = 0;
 
-		// Cargar los datos e inicio de programa
+		// CARGAR DATOS 
 
 		System.out.println("Bienvenido a su administrador de vehiculos\n");
-
+		// CARGAMOS EL METODO LOGGIN EMPLEADOS 
 		LogginEmpleado();
 
-		// Menú principal
+		// MENU PRINCIPAL
 		do {
 			try {
 				System.out.println("\nMenú");
@@ -46,7 +47,7 @@ public class Principal {
 				opcion = sc.nextInt();
 
 				System.out.print("\n");
-
+				// SWITCH  PARA ELEGIR METODOS A REALIZAR
 				switch (opcion) {
 				case 1:
 					mostrarVehiculos();
@@ -97,17 +98,24 @@ public class Principal {
 			}
 		} while (opcion != 13);
 	}
-
+	// METODO MOSTRAS VEHICULOS
+	
 	private static void mostrarVehiculos() throws ClassNotFoundException {
 		boolean sinVehiculos = true;
+		//CREAMOS OBJETO TIPO VEHICULO
 		Vehiculo mostrarVehiculo = new Turismo();
+		// ARRAYLIST VEHICULOS Y LLAMAMOS AL METODO LEER TODOS DE TURISMOS
 		ArrayList<Vehiculo> Vehiculos = mostrarVehiculo.leerTodos();
+		
+		//RECORREMOS EL ARRAY PARA IMPRIMIR TODOS LOS TURISMOS
 		for (int i = 0; i < Vehiculos.size(); i++) {
 			System.out.println(Vehiculos.get(i).toString());
 			sinVehiculos = false;
 		}
+		//CAMBIAMOS EL TIPO DE TURISMO A TIPO CAMION
 		mostrarVehiculo = new Camion();
 		Vehiculos = mostrarVehiculo.leerTodos();
+		//RECORREMOS ARRAYLIST DE CAMIONES PARA IMPRIMIR TODOS
 		for (int i = 0; i < Vehiculos.size(); i++) {
 			System.out.println(Vehiculos.get(i).toString());
 			sinVehiculos = false;
@@ -117,14 +125,17 @@ public class Principal {
 
 		}
 	}
-
+	// METODO BUSCAR VEHCULO
+	
 	private static void buscarVehiculo() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Indica la matricula");
 		String Matricula = sc.next();
 		Vehiculo leerCamiones = new Camion();
+		//LLAMAMOS AL METODO DE LEER TURIMOS PARA ENCONTRAR LA MATRICULA QUE HEMOS INSERTADO
 		leerCamiones = leerCamiones.leerVehiculo(Matricula);
 		Vehiculo leerTurismos = new Turismo();
+		//LAMAMOS AL METODO LEER CAMIONES PARA ENCONTRAR A MATRICULA QUE HEMOS INSERTADO
 		leerTurismos = leerTurismos.leerVehiculo(Matricula);
 		if (leerCamiones != null) {
 			System.out.println(leerCamiones.toString());
@@ -135,7 +146,7 @@ public class Principal {
 		}
 
 	}
-
+	// METODO AÑADIR VEHICULO
 	private static void añadirvehiculo() throws ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		boolean seguir = false;
@@ -145,12 +156,22 @@ public class Principal {
 			seguir = false;
 			System.out.println("Introduzca matricula");
 			Matricula = sc.next();
+			
+			//CREAMOS OBJETO DE TIPO VEHICULO/TURISMO
 			Vehiculo existeTurismo = new Turismo();
+			
+			// LLAMAMOS AL METODO LEER VEHICULO DE LA CLASE TURISMOS Y LE PASAMOS MATRICULA
 			existeTurismo = existeTurismo.leerVehiculo(Matricula);
+			
+			//CREAMOS OBJETO DE TIPO VEHICULO/CAMION
 			Vehiculo existeCamion = new Camion();
+			
+			// LLAMAMOS AL METODO LEER VEHICULO DE LA CLASE CAMION Y LE PASAMOS MMATRICULA
 			existeCamion = existeCamion.leerVehiculo(Matricula);
+			
+			
 			if (existeTurismo != null) {
-
+				// SI LA MATRICULA PUESTA ES IGUAL QUE LA QUE SE DESEA  SALTA MENSAJE DE MATRICULA REPETIDA
 				if (existeTurismo.getMatricula().equals(Matricula)) {
 					System.out.println("Matricula repetida");
 					seguir = true;
@@ -158,7 +179,7 @@ public class Principal {
 			}
 
 			if (existeCamion != null) {
-
+				// SI LA MATRICULA PUESTA ES IGUAL QUE LA QUE SE DESEA  SALTA MENSAJE DE MATRICULA REPETIDA
 				if (existeCamion.getMatricula().equals(Matricula)) {
 					System.out.println("Matricula repetida");
 					seguir = true;
