@@ -1,0 +1,57 @@
+DROP TABLE Turismos;
+DROP TABLE Camiones;
+DROP TABLE Extras;
+DROP TABLE Usuarios;
+DROP TABLE Vehiculos;
+
+CREATE TABLE Vehiculos(
+matricula varchar(10) Primary key,
+marca varchar(15) NOT NULL,
+modelo varchar(15) NOT NULL,
+color varchar(15) NOT NULL,
+precio int NOT NULL);
+
+CREATE TABLE Camiones(
+carga DECIMAL(8,2) NOT NULL,
+matricula varchar(7) NOT NULL,
+FOREIGN KEY (matricula) REFERENCES Vehiculos);
+
+CREATE TABLE Extras(
+id INT PRIMARY KEY,
+descripcion varchar(50) NOT NULL);
+
+CREATE TABLE Turismos(
+numpuertas SMALLINT NOT NULL,
+matricula varchar(7) NOT NULL,
+id SMALLINT,
+ FOREIGN KEY (matricula) REFERENCES Vehiculos,
+ FOREIGN KEY (id) REFERENCES Extras
+ );
+
+CREATE TABLE Usuarios(
+loggin varchar2(50) Primary key,
+password varchar2(50) NOT NULL);
+
+INSERT INTO Vehiculos VALUES ('8888HPL','Ford', 'Fiesta','Amarillo', 16000);
+INSERT INTO Vehiculos VALUES ('7777HKJ', 'BMW', 'Serie 1', 'Verde', 25000);
+INSERT INTO Vehiculos VALUES ('6666GHR', 'Iveco', 'Transit', 'Blanco', 18000);
+INSERT INTO Vehiculos VALUES ('1111SYE', 'Renault', 'Clio', 'Blanco', 14000);
+
+INSERT INTO Extras VALUES (1, 'Sin Extra');
+INSERT INTO Extras VALUES (2, 'Retrovisores automaticos');
+INSERT INTO Extras VALUES (3, 'Luces diurnas');
+
+INSERT INTO Turismos VALUES (5, '8888HPL', 1);
+INSERT INTO Turismos VALUES (5, '7777HKJ', 2);
+
+INSERT INTO Camiones VALUES (1000, '6666GHR');
+INSERT INTO Camiones VALUES (1400, '1111SYE');
+
+INSERT INTO Usuarios Values ('Edy', '1234');
+INSERT INTO Usuarios Values ('Juan', '1234');
+
+select * from camiones;
+select * from turismos;
+select * from vehiculos
+select * from usuarios
+select * from extras
