@@ -19,7 +19,7 @@ public class Camion  extends Vehiculo{
 		cDao = new CamionDao();
 		
 	
-	
+	//GETTER Y SETTERS
 
 }
 	public double getCarga() {
