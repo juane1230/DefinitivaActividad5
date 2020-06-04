@@ -3,13 +3,15 @@ package Dominio;
 import java.util.ArrayList;
 
 import Persistencia.TurismoDao;
-
+//CLASE TURISMO
 public class Turismo extends Vehiculo {
+	
+	//ATRIBUTOS
 	private int puertas;
 	private Extra extra;
 	
 	private TurismoDao tDao;
-
+	//CONSTRUCOR
 	public Turismo(String matricula, String marca, String modelo, String color, double precio, int puertas, Extra extra) {
 		super(matricula,marca,modelo,color,precio);
 		this.puertas = puertas;
@@ -17,12 +19,12 @@ public class Turismo extends Vehiculo {
 		tDao=new TurismoDao();
 		
 	}
-
+	//CONSTRUCTOR CON OBEJTO DE CLASE TURISMO
 	public Turismo() {
 		tDao=new TurismoDao();
 		
 	}
-
+	//GETTER Y SETTER
 	public int getPuertas() {
 		return puertas;
 	}
@@ -41,11 +43,11 @@ public class Turismo extends Vehiculo {
 
 
 
-	
+	//METODO TO STRING
 	public String toString() {
 		return "Turismo [matricula="+this.getMatricula()+" ,marca="+this.getMarca()+" ,modelo="+this.getModelo()+" ,color="+this.getColor()+" ,precio="+this.getPrecio()+" ,num_puertas=" + puertas + ", extra=" + extra + "]";
 	}
-	
+	//METODO PARA IMPLANTAR EN LA CLASE TURISMO
 	public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException {
 		return tDao.leerTodos();
 	}

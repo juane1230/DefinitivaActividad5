@@ -3,15 +3,17 @@ package Dominio;
 import java.util.ArrayList;
 
 import Persistencia.VehiculoDao;
-
+// CLASE VEHICULO
 abstract public class Vehiculo {
+	
+	//ATRIBUTOS
 	 protected String matricula;
 		protected String marca;
 		protected String modelo;
 		protected String color;
 		protected double precio;
 		protected VehiculoDao vDao;
-		
+		// CONTRUCTOR
 		public Vehiculo(String matricula, String marca, String modelo, String color, double precio ) {
 			
 			this.matricula = matricula;
@@ -21,12 +23,16 @@ abstract public class Vehiculo {
 			this.precio = precio;
 			this.vDao = vDao;
 		}
+		//CONSTRUCTOR VACIO
 		public Vehiculo() {
 			
 		}
+		//METODO TO STRING
 		public String getMatricula() {
 			return matricula;
 		}
+		
+		//GETTER Y SETTER
 		public void setMatricula(String matricula) {
 			this.matricula = matricula;
 		}
@@ -60,6 +66,8 @@ abstract public class Vehiculo {
 		public void setvDao(VehiculoDao vDao) {
 			this.vDao = vDao;
 		}
+		
+		//METODOS ABSTRACTOS DE TIPO VEHICULO QUE SE IMPLEMENTARAN EN TURISMO Y EN CAMION
 		abstract public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException ;
 
 		public abstract Vehiculo leerVehiculo(String matricula) throws ClassNotFoundException;

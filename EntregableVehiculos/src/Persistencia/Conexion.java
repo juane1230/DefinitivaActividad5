@@ -3,7 +3,7 @@ package Persistencia;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+//CLASE CONEXION
 public class Conexion {
 	public static Connection conectar() throws ClassNotFoundException, SQLException {
 		Connection conexion = null;

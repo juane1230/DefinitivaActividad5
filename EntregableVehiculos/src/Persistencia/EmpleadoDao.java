@@ -7,20 +7,23 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Dominio.*;
-
+//CLASE EMPLEADO DAO
 public class EmpleadoDao {
+	//CONSTRUCTOR VACIO
 public EmpleadoDao() {
 		
 	}
+//METODO INSERTAR
 public boolean insertar(Empleado empleado) throws ClassNotFoundException {
 	boolean registrar = false;
 	
 	Statement stm= null;
 	Connection con=null;
-	
+	//CONSULTA EN LA BASE DE DATOS
 	String sql="INSERT INTO Empleado values ('"+empleado.getLoggin()+"','"+empleado.getPassword()+")";
 	
-	try {			
+	try {	
+		//EXCEPCION DE CONEXION
 		con=Conexion.conectar();
 		stm= con.createStatement();
 		stm.execute(sql);
@@ -32,20 +35,22 @@ public boolean insertar(Empleado empleado) throws ClassNotFoundException {
 		e.printStackTrace();
 	}
 	
-	
+	//DEVUELVE EL METODO
 	return registrar;
 }
 
-
+//METODO LEER TODO 
 public ArrayList<Empleado> leerTodos() throws ClassNotFoundException {
 	Connection co = null;
 	Statement stm = null;
 	ResultSet rs = null;
+	//CONSULTA EN LA BASE DE DATOS
 	String sql = "SELECT * FROM Empleado ORDER BY loggin";
 
 	ArrayList<Empleado> listaEmpleado = new ArrayList<Empleado>();
 
 	try {
+		//EXCEPCION CONEXION
 		co = Conexion.conectar();
 		stm = co.createStatement();
 		rs = stm.executeQuery(sql);
@@ -55,9 +60,11 @@ public ArrayList<Empleado> leerTodos() throws ClassNotFoundException {
 		stm.close();
 		rs.close();
 		co.close();
+		//RECORREMOS  EL ARRAY
 		for (int i = 0; i < listaEmpleado.size(); i++) {
 			co = Conexion.conectar();
 			stm = co.createStatement();
+			//HACEMOS LA CONSULTA SOBRE EL ARRAY
 			sql = "SELECT * FROM Empleado WHERE loggin='" + listaEmpleado.get(i).getLoggin() + "'";
 			rs = stm.executeQuery(sql);
 			rs.next();
@@ -70,20 +77,22 @@ public ArrayList<Empleado> leerTodos() throws ClassNotFoundException {
 		System.out.println("Error: Clase ProfesorDaoImple, método obtener");
 		e.printStackTrace();
 	}
-
+	//DEVOLVEMOS EL METODO
 	return listaEmpleado;
 }
 
 
-
+//METODO LEER EMPLEADO
 public Empleado leerEmpleado(String loggin, String password) throws ClassNotFoundException {
 	Connection co = null;
 	Statement stm = null;
 	ResultSet rs = null;
 
 	Empleado leerEmpleado = null;
+	//CONSULTA SOBRE LA BASE DE DATOS
 	String sql = "SELECT * FROM Usuarios WHERE loggin='" + loggin + "' AND password='" + password + "' ";
 	try {
+		//EXCEPCION DE CONEXION
 		co = Conexion.conectar();
 		stm = co.createStatement();
 		rs = stm.executeQuery(sql);

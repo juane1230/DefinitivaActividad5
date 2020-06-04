@@ -3,14 +3,14 @@ package Dominio;
 import java.util.ArrayList;
 
 import Persistencia.ExtraDao;
-
+// CLASE EXTRA
 public class Extra {
-	
+	//ATRIBUTOS
 	private int id;
 	private String descripcion;
 	
 	private ExtraDao extraDao;
-
+	//CONSTRUCTOR
 	public Extra(int id, String descripcion) {
 		
 		this.id = id;
@@ -19,11 +19,12 @@ public class Extra {
 		
 		extraDao= new ExtraDao();
 	}
+	//CONSTRUCTOR CON OBJETO EXTRA
 	public Extra() {
 		extraDao= new ExtraDao();
 		
 	}
-	
+	//METOS PARA IMPLANTAR EN LA CLASE EXTRA DAO
 	
 	public ArrayList<Extra> leerTodosExtras() throws ClassNotFoundException {
 		return extraDao.leerTodosExtras();
@@ -38,10 +39,12 @@ public class Extra {
 		
 	}
 	@Override
+	
+	//METODO TO STRING
 	public String toString() {
 		return "Extra [id=" + id + ", descripcion=" + descripcion + "]";
 	}
-
+//GETTER YY SETTER
 	public int getId() {
 		return id;
 	}

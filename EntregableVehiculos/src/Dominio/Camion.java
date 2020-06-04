@@ -4,17 +4,19 @@ import java.util.ArrayList;
 
 import Persistencia.CamionDao;
 import Persistencia.VehiculoDao;
-
+//CLASE CAMION
 public class Camion  extends Vehiculo{
+	//ATRIBUTOS
 	private double carga;
 	
 	private CamionDao cDao;
-	
+	//CONSTRUCTOR
 	public Camion(String matricula, String marca, String modelo, String color, double precio ,double carga) {
 		super(matricula, marca, modelo, color, precio);
 		this.carga = carga;
 		cDao = new CamionDao();
 	}
+	//CONSTRUCTOR CON OBJETO DE TIPO CAMION
 	public Camion( ) {
 		cDao = new CamionDao();
 		
@@ -35,6 +37,7 @@ public class Camion  extends Vehiculo{
 		this.cDao = cDao;
 	}
 	@Override
+	//METODOS DE TIPO VEHICULO PARA IMPLANTAR EN CAMION DAO
 	public ArrayList<Vehiculo> leerTodos() throws ClassNotFoundException {
 		return cDao.leerTodos();
 	}
@@ -65,6 +68,7 @@ public class Camion  extends Vehiculo{
 		
 	}
 	@Override
+	//METODO TO STRING
 	public String toString() {
 		return "Camion [matricula="+this.getMatricula()+" ,marca="+this.getMarca()+"modelo="+this.getModelo()+"color="+this.getColor()+" ,precio="+this.getPrecio()+" ,carga=" + carga + "]";
 	}
